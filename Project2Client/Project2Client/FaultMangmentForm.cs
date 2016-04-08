@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Project2Client
 {
-    public partial class InitEntryForm : Form
+    public partial class FaultMangmentForm : Form
     {
-        public InitEntryForm()
+        public FaultMangmentForm()
         {
             InitializeComponent();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
