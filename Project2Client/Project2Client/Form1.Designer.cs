@@ -42,6 +42,7 @@
             this.CManageButton.TabIndex = 0;
             this.CManageButton.Text = "Company Managment";
             this.CManageButton.UseVisualStyleBackColor = true;
+            this.CManageButton.Click += new System.EventHandler(this.CManageButton_Click);
             // 
             // EngManageButton
             // 
@@ -51,6 +52,7 @@
             this.EngManageButton.TabIndex = 1;
             this.EngManageButton.Text = "Engineer Managment";
             this.EngManageButton.UseVisualStyleBackColor = true;
+            this.EngManageButton.Click += new System.EventHandler(this.EngManageButton_Click);
             // 
             // FManageButton
             // 
@@ -60,7 +62,7 @@
             this.FManageButton.TabIndex = 2;
             this.FManageButton.Text = "Fault Managment";
             this.FManageButton.UseVisualStyleBackColor = true;
-            this.FManageButton.Click += new System.EventHandler(this.button3_Click);
+            this.FManageButton.Click += new System.EventHandler(this.FManageButton_Click);
             // 
             // EquipManageButton
             // 
@@ -70,6 +72,7 @@
             this.EquipManageButton.TabIndex = 3;
             this.EquipManageButton.Text = "Equipment Managment";
             this.EquipManageButton.UseVisualStyleBackColor = true;
+            this.EquipManageButton.Click += new System.EventHandler(this.EquipManageButton_Click);
             // 
             // InitEntryForm
             // 

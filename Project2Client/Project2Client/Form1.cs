@@ -17,9 +17,29 @@ namespace Project2Client
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
+        private void CManageButton_Click(object sender, EventArgs e)
+        {
+            CMangamentForm CForm = new CMangamentForm();
+            CForm.ShowDialog();
+        }
+
+        private void EngManageButton_Click(object sender, EventArgs e)
+        {
+            EngManagementForm EForm = new EngManagementForm();
+            EForm.ShowDialog();
+        }
+
+        private void FManageButton_Click(object sender, EventArgs e)
+        {
+            FaultMangmentForm FForm = new FaultMangmentForm();
+            FForm.ShowDialog();
+        }
+
+        private void EquipManageButton_Click(object sender, EventArgs e)
+        {
+            EquipManagmentForm EQForm = new EquipManagmentForm();
+            EQForm.ShowDialog();
         }
     }
 }

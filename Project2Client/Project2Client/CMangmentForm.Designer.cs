@@ -1,6 +1,6 @@
 ﻿namespace Project2Client
 {
-    partial class CMangmentForm
+    partial class CMangamentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CMangamentForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "CMangmentForm";
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "CMangamentForm";
+            this.Text = "CMangamentForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

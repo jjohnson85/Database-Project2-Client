@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project2Client
 {
-    public partial class CMangmentForm : Form
+    public partial class CMangamentForm : Form
     {
-        public CMangmentForm()
+        public CMangamentForm()
         {
             InitializeComponent();
         }
