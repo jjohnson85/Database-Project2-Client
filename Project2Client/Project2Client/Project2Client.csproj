@@ -92,6 +92,9 @@
     <EmbeddedResource Include="CMangmentForm.resx">
       <DependentUpon>CMangmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FaultMangmentForm.resx">
+      <DependentUpon>FaultMangmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
