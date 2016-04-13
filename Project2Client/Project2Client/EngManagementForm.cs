@@ -23,9 +23,9 @@ namespace Project2Client
         private void EngManagementForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 's7110008DataSet1.RepairsOF' table. You can move, or remove it, as needed.
-            this.repairsOFTableAdapter.Fill(this.s7110008DataSet1.RepairsOF);
+            this.repairsOFTableAdapter.Fill(this.s7110008DataSet.RepairsOF);
             // TODO: This line of code loads data into the 's7110008DataSet1.RepairsMF' table. You can move, or remove it, as needed.
-            this.repairsMFTableAdapter.Fill(this.s7110008DataSet1.RepairsMF);
+            this.repairsMFTableAdapter.Fill(this.s7110008DataSet.RepairsMF);
             // TODO: This line of code loads data into the 's7110008DataSet.Engineer' table. You can move, or remove it, as needed.
             this.engineerTableAdapter.Fill(this.s7110008DataSet.Engineer);
             // TODO: This line of code loads data into the 's7110008DataSet.RepairsEF' table. You can move, or remove it, as needed.
@@ -40,12 +40,15 @@ namespace Project2Client
             {
                 case "Mechanical Repairs":
                     this.dataGridView1.DataSource = this.repairsMFBindingSource;
+                    //this.dataGridView1.DataSource = this.repairsMFTableAdapter.GetData();
                     break;
                 case "Electrical Repairs":
                     this.dataGridView1.DataSource = this.repairsEFBindingSource;
+                    //this.dataGridView1.DataSource = this.repairsEFTableAdapter.GetData();
                     break;
                 case "Other Repairs":
                     this.dataGridView1.DataSource = this.repairsOFBindingSource;
+                    //this.dataGridView1.DataSource = this.repairsOFTableAdapter.GetData();
                     break;
                 default:
                     break;

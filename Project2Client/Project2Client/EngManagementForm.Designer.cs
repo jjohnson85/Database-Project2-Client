@@ -34,7 +34,6 @@
             this.s7110008DataSet = new Project2Client.s7110008DataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.repairsOFBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.s7110008DataSet1 = new Project2Client.s7110008DataSet();
             this.repairsEFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repairsEFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsEFTableAdapter();
             this.engineerTableAdapter = new Project2Client.s7110008DataSetTableAdapters.EngineerTableAdapter();
@@ -44,13 +43,18 @@
             this.repairsMFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repairsMFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsMFTableAdapter();
             this.repairsOFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsOFTableAdapter();
+            this.fKRepairsOFengNo544C7222BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKRepairsEFengNo581D0306BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKRepairsMFengNo5BED93EABindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.engineerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsOFBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsEFBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsMFBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsOFengNo544C7222BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsEFengNo581D0306BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsMFengNo5BED93EABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -83,18 +87,12 @@
             // 
             // repairsOFBindingSource
             // 
-            this.repairsOFBindingSource.DataMember = "FK__RepairsOF__engNo__544C7222";
-            this.repairsOFBindingSource.DataSource = this.engineerBindingSource;
-            // 
-            // s7110008DataSet1
-            // 
-            this.s7110008DataSet1.DataSetName = "s7110008DataSet";
-            this.s7110008DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.repairsOFBindingSource.DataSource = this.fKRepairsOFengNo544C7222BindingSource;
+            this.repairsOFBindingSource.Filter = "";
             // 
             // repairsEFBindingSource
             // 
-            this.repairsEFBindingSource.DataMember = "FK__RepairsEF__engNo__581D0306";
-            this.repairsEFBindingSource.DataSource = this.engineerBindingSource;
+            this.repairsEFBindingSource.DataSource = this.fKRepairsEFengNo581D0306BindingSource;
             // 
             // repairsEFTableAdapter
             // 
@@ -138,8 +136,7 @@
             // 
             // repairsMFBindingSource
             // 
-            this.repairsMFBindingSource.DataMember = "FK__RepairsMF__engNo__5BED93EA";
-            this.repairsMFBindingSource.DataSource = this.engineerBindingSource;
+            this.repairsMFBindingSource.DataSource = this.fKRepairsMFengNo5BED93EABindingSource;
             // 
             // repairsMFTableAdapter
             // 
@@ -148,6 +145,21 @@
             // repairsOFTableAdapter
             // 
             this.repairsOFTableAdapter.ClearBeforeFill = true;
+            // 
+            // fKRepairsOFengNo544C7222BindingSource
+            // 
+            this.fKRepairsOFengNo544C7222BindingSource.DataMember = "FK__RepairsOF__engNo__544C7222";
+            this.fKRepairsOFengNo544C7222BindingSource.DataSource = this.engineerBindingSource;
+            // 
+            // fKRepairsEFengNo581D0306BindingSource
+            // 
+            this.fKRepairsEFengNo581D0306BindingSource.DataMember = "FK__RepairsEF__engNo__581D0306";
+            this.fKRepairsEFengNo581D0306BindingSource.DataSource = this.engineerBindingSource;
+            // 
+            // fKRepairsMFengNo5BED93EABindingSource
+            // 
+            this.fKRepairsMFengNo5BED93EABindingSource.DataMember = "FK__RepairsMF__engNo__5BED93EA";
+            this.fKRepairsMFengNo5BED93EABindingSource.DataSource = this.engineerBindingSource;
             // 
             // EngManagementForm
             // 
@@ -166,9 +178,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsOFBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsEFBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repairsMFBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsOFengNo544C7222BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsEFengNo581D0306BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsMFengNo5BED93EABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,10 +199,12 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private s7110008DataSet s7110008DataSet1;
         private System.Windows.Forms.BindingSource repairsMFBindingSource;
         private s7110008DataSetTableAdapters.RepairsMFTableAdapter repairsMFTableAdapter;
         private System.Windows.Forms.BindingSource repairsOFBindingSource;
         private s7110008DataSetTableAdapters.RepairsOFTableAdapter repairsOFTableAdapter;
+        private System.Windows.Forms.BindingSource fKRepairsOFengNo544C7222BindingSource;
+        private System.Windows.Forms.BindingSource fKRepairsEFengNo581D0306BindingSource;
+        private System.Windows.Forms.BindingSource fKRepairsMFengNo5BED93EABindingSource;
     }
 }
