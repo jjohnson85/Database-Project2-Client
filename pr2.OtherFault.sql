@@ -1,0 +1,10 @@
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (1, 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.', 14);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (2, 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 16);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (3, 'Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 16);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (4, 'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.', 15);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (5, 'Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 3);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (6, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.', 2);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (7, 'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', 18);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (8, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.', 2);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (9, 'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc.', 16);
+insert into pr2.OtherFault (oFaultID, descript, equipID) values (10, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.', 13);
