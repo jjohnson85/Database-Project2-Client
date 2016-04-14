@@ -84,6 +84,9 @@
     <Compile Include="RepairMangmentForm.Designer.cs">
       <DependentUpon>RepairMangmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="s7110008DataSet.cs">
+      <DependentUpon>s7110008DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="s7110008DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
