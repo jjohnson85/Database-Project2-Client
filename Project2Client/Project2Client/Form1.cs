@@ -26,7 +26,7 @@ namespace Project2Client
 
         private void EngManageButton_Click(object sender, EventArgs e)
         {
-            EngManagementForm EForm = new EngManagementForm();
+            RepairsManagementForm EForm = new RepairsManagementForm();
             EForm.ShowDialog();
         }
 

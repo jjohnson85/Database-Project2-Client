@@ -1,6 +1,6 @@
 ﻿namespace Project2Client
 {
-    partial class EngManagementForm
+    partial class RepairsManagementForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,28 +33,20 @@
             this.engineerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.s7110008DataSet = new Project2Client.s7110008DataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.repairsOFBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.repairsEFBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.repairsEFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsEFTableAdapter();
+            this.engNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hrsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.faultIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allRepairsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.engineerTableAdapter = new Project2Client.s7110008DataSetTableAdapters.EngineerTableAdapter();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.repairsMFBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.repairsMFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsMFTableAdapter();
-            this.repairsOFTableAdapter = new Project2Client.s7110008DataSetTableAdapters.RepairsOFTableAdapter();
-            this.fKRepairsOFengNo544C7222BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKRepairsEFengNo581D0306BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKRepairsMFengNo5BED93EABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.allRepairsTableAdapter = new Project2Client.s7110008DataSetTableAdapters.AllRepairsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.engineerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsOFBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsEFBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsMFBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsOFengNo544C7222BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsEFengNo581D0306BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsMFengNo5BED93EABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allRepairsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -66,6 +58,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // engineerBindingSource
             // 
@@ -79,24 +72,47 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.engNoDataGridViewTextBoxColumn,
+            this.dtDataGridViewTextBoxColumn,
+            this.hrsDataGridViewTextBoxColumn,
+            this.faultIDDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.allRepairsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 76);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(443, 252);
             this.dataGridView1.TabIndex = 1;
             // 
-            // repairsOFBindingSource
+            // engNoDataGridViewTextBoxColumn
             // 
-            this.repairsOFBindingSource.DataSource = this.fKRepairsOFengNo544C7222BindingSource;
-            this.repairsOFBindingSource.Filter = "";
+            this.engNoDataGridViewTextBoxColumn.DataPropertyName = "engNo";
+            this.engNoDataGridViewTextBoxColumn.HeaderText = "engNo";
+            this.engNoDataGridViewTextBoxColumn.Name = "engNoDataGridViewTextBoxColumn";
             // 
-            // repairsEFBindingSource
+            // dtDataGridViewTextBoxColumn
             // 
-            this.repairsEFBindingSource.DataSource = this.fKRepairsEFengNo581D0306BindingSource;
+            this.dtDataGridViewTextBoxColumn.DataPropertyName = "dt";
+            this.dtDataGridViewTextBoxColumn.HeaderText = "dt";
+            this.dtDataGridViewTextBoxColumn.Name = "dtDataGridViewTextBoxColumn";
             // 
-            // repairsEFTableAdapter
+            // hrsDataGridViewTextBoxColumn
             // 
-            this.repairsEFTableAdapter.ClearBeforeFill = true;
+            this.hrsDataGridViewTextBoxColumn.DataPropertyName = "hrs";
+            this.hrsDataGridViewTextBoxColumn.HeaderText = "hrs";
+            this.hrsDataGridViewTextBoxColumn.Name = "hrsDataGridViewTextBoxColumn";
+            // 
+            // faultIDDataGridViewTextBoxColumn
+            // 
+            this.faultIDDataGridViewTextBoxColumn.DataPropertyName = "faultID";
+            this.faultIDDataGridViewTextBoxColumn.HeaderText = "faultID";
+            this.faultIDDataGridViewTextBoxColumn.Name = "faultIDDataGridViewTextBoxColumn";
+            // 
+            // allRepairsBindingSource
+            // 
+            this.allRepairsBindingSource.DataMember = "AllRepairs";
+            this.allRepairsBindingSource.DataSource = this.s7110008DataSet;
             // 
             // engineerTableAdapter
             // 
@@ -134,32 +150,9 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.MakeRepair_Click);
             // 
-            // repairsMFBindingSource
+            // allRepairsTableAdapter
             // 
-            this.repairsMFBindingSource.DataSource = this.fKRepairsMFengNo5BED93EABindingSource;
-            // 
-            // repairsMFTableAdapter
-            // 
-            this.repairsMFTableAdapter.ClearBeforeFill = true;
-            // 
-            // repairsOFTableAdapter
-            // 
-            this.repairsOFTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKRepairsOFengNo544C7222BindingSource
-            // 
-            this.fKRepairsOFengNo544C7222BindingSource.DataMember = "FK__RepairsOF__engNo__544C7222";
-            this.fKRepairsOFengNo544C7222BindingSource.DataSource = this.engineerBindingSource;
-            // 
-            // fKRepairsEFengNo581D0306BindingSource
-            // 
-            this.fKRepairsEFengNo581D0306BindingSource.DataMember = "FK__RepairsEF__engNo__581D0306";
-            this.fKRepairsEFengNo581D0306BindingSource.DataSource = this.engineerBindingSource;
-            // 
-            // fKRepairsMFengNo5BED93EABindingSource
-            // 
-            this.fKRepairsMFengNo5BED93EABindingSource.DataMember = "FK__RepairsMF__engNo__5BED93EA";
-            this.fKRepairsMFengNo5BED93EABindingSource.DataSource = this.engineerBindingSource;
+            this.allRepairsTableAdapter.ClearBeforeFill = true;
             // 
             // EngManagementForm
             // 
@@ -177,12 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.engineerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsOFBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsEFBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repairsMFBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsOFengNo544C7222BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsEFengNo581D0306BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKRepairsMFengNo5BED93EABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allRepairsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,19 +180,16 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private s7110008DataSet s7110008DataSet;
-        private System.Windows.Forms.BindingSource repairsEFBindingSource;
-        private s7110008DataSetTableAdapters.RepairsEFTableAdapter repairsEFTableAdapter;
         private System.Windows.Forms.BindingSource engineerBindingSource;
         private s7110008DataSetTableAdapters.EngineerTableAdapter engineerTableAdapter;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.BindingSource repairsMFBindingSource;
-        private s7110008DataSetTableAdapters.RepairsMFTableAdapter repairsMFTableAdapter;
-        private System.Windows.Forms.BindingSource repairsOFBindingSource;
-        private s7110008DataSetTableAdapters.RepairsOFTableAdapter repairsOFTableAdapter;
-        private System.Windows.Forms.BindingSource fKRepairsOFengNo544C7222BindingSource;
-        private System.Windows.Forms.BindingSource fKRepairsEFengNo581D0306BindingSource;
-        private System.Windows.Forms.BindingSource fKRepairsMFengNo5BED93EABindingSource;
+        private System.Windows.Forms.BindingSource allRepairsBindingSource;
+        private s7110008DataSetTableAdapters.AllRepairsTableAdapter allRepairsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn engNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hrsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn faultIDDataGridViewTextBoxColumn;
     }
 }

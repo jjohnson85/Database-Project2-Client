@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.s7110008DataSet = new Project2Client.s7110008DataSet();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.companyTableAdapter = new Project2Client.s7110008DataSetTableAdapters.CompanyTableAdapter();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +37,15 @@
             this.phone1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.s7110008DataSet = new Project2Client.s7110008DataSet();
+            this.companyTableAdapter = new Project2Client.s7110008DataSetTableAdapters.CompanyTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -65,20 +65,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(743, 308);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // s7110008DataSet
-            // 
-            this.s7110008DataSet.DataSetName = "s7110008DataSet";
-            this.s7110008DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataMember = "Company";
-            this.companyBindingSource.DataSource = this.s7110008DataSet;
-            // 
-            // companyTableAdapter
-            // 
-            this.companyTableAdapter.ClearBeforeFill = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -122,6 +108,20 @@
             this.phone3DataGridViewTextBoxColumn.HeaderText = "phone3";
             this.phone3DataGridViewTextBoxColumn.Name = "phone3DataGridViewTextBoxColumn";
             // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataMember = "Company";
+            this.companyBindingSource.DataSource = this.s7110008DataSet;
+            // 
+            // s7110008DataSet
+            // 
+            this.s7110008DataSet.DataSetName = "s7110008DataSet";
+            this.s7110008DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // companyTableAdapter
+            // 
+            this.companyTableAdapter.ClearBeforeFill = true;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(12, 52);
@@ -161,11 +161,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CMangamentForm";
-            this.Text = "CMangamentForm";
+            this.Text = "Company Management Form";
             this.Load += new System.EventHandler(this.CMangamentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s7110008DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
