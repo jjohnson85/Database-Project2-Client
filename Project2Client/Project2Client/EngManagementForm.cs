@@ -51,5 +51,18 @@ namespace Project2Client
                     break;
             }
         }
+
+        private void MakeRepair_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(comboBox1.Text, out engNum))
+            {
+                MakeRepairForm Repairer = new MakeRepairForm(engNum);
+                Repairer.ShowDialog();
+            }
+            else
+            {
+                comboBox1.Text = "Bad Value";
+            }
+        }
     }
 }

@@ -134,6 +134,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Make Repair";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.MakeRepair_Click);
             // 
             // repairsMFBindingSource
             // 

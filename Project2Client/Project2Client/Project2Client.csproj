@@ -77,11 +77,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeRepair.cs">
+    <Compile Include="MakeRepairForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MakeRepair.Designer.cs">
-      <DependentUpon>MakeRepair.cs</DependentUpon>
+    <Compile Include="MakeRepairForm.Designer.cs">
+      <DependentUpon>MakeRepairForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,8 +108,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MakeRepair.resx">
-      <DependentUpon>MakeRepair.cs</DependentUpon>
+    <EmbeddedResource Include="MakeRepairForm.resx">
+      <DependentUpon>MakeRepairForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,0 +1,10 @@
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (1, 'Ut tellus.', 4060, 6);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (2, 'Donec dapibus.', 8761, 10);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (3, 'Aenean lectus.', 4391, 15);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (4, 'Etiam justo.', 9331, 5);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (5, 'In hac habitasse platea dictumst.', 8030, 6);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (6, 'Proin at turpis a pede posuere nonummy.', 2208, 7);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (7, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 2805, 6);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (8, 'Morbi porttitor lorem id ligula.', 3973, 14);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (9, 'Donec ut dolor.', 6305, 4);
+insert into pr2.ElectFault (eFaultID, descript, epartNum, equipID) values (10, 'Nullam molestie nibh in lectus.', 7754, 17);
