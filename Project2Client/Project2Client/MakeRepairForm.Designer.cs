@@ -156,7 +156,7 @@
             this.Controls.Add(this.selectLabel);
             this.Controls.Add(this.faultNumberEntry);
             this.Name = "MakeRepairForm";
-            this.Text = "Engineer " + EngNo.ToString() + " is making a repair";
+            this.Text = "";
             this.Load += new System.EventHandler(this.MakeRepairForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.faultViewerSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();

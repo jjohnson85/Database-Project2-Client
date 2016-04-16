@@ -18,3 +18,4 @@ insert into pr2.Equipment (equipID, manufacturer, yearPurchased, price, cName) v
 insert into pr2.Equipment (equipID, manufacturer, yearPurchased, price, cName) values (18, 'DabZ', 1986, '$9980.99', 'Ntag');
 insert into pr2.Equipment (equipID, manufacturer, yearPurchased, price, cName) values (19, 'Brainlounge', 1994, '$744.36', 'Voolia');
 insert into pr2.Equipment (equipID, manufacturer, yearPurchased, price, cName) values (20, 'Linkbuzz', 1999, '$7174.50', 'Skinte');
+select * from pr2.Equipment

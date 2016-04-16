@@ -26,7 +26,7 @@ namespace Project2Client
 
         private void MakeRepairForm_Load(object sender, EventArgs e)
         {
-
+            this.Text = "Engineer " + EngNo.ToString() + " is making a repair";
         }
 
         private void buttonRepairFault_Click(object sender, EventArgs e)
