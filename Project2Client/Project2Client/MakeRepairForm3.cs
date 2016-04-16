@@ -17,7 +17,6 @@ namespace Project2Client
         private int fault;
         private int hours;
         private int engNo;
-        private DataTable data;
 
         public MakeRepairForm2()
         {
@@ -28,6 +27,7 @@ namespace Project2Client
 
         public MakeRepairForm2(int EngNo)
         {
+            //Make a form with fancy title dependent on caller.
             InitializeComponent();
             this.engNo = EngNo;
             this.Text = "Engineer " + EngNo.ToString() + " is repairing fault ";
@@ -35,6 +35,7 @@ namespace Project2Client
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //Do all the necessary initialization stuff;
             this.hours = -1;
             this.MechFaultTableAdapter = new s7110008DataSetTableAdapters.MechFaultTableAdapter();
             this.OtherFaultTableAdapter = new s7110008DataSetTableAdapters.OtherFaultTableAdapter();
@@ -63,6 +64,7 @@ namespace Project2Client
         {
             switch (tableName.Text)
             {
+                //Display Electrical Fault table
                 case "Electrical":
                     this.faultViewerSource.DataMember = "ElectFault";
                     this.faultIDSource.DataSource = this.faultViewerSource;
@@ -72,6 +74,7 @@ namespace Project2Client
                     this.faultID.Update();
                     this.faultViewer.Update();
                     break;
+                //Display Mechanical Fault table
                 case "Mechanical":
                     this.faultViewerSource.DataMember = "MechFault";
                     this.faultIDSource.DataSource = this.faultViewerSource;
@@ -81,6 +84,7 @@ namespace Project2Client
                     this.faultID.Update();
                     this.faultViewer.Update();
                     break;
+                //Display Other Fault table
                 case "Other":
                     this.faultViewerSource.DataMember = "OtherFault";
                     this.faultIDSource.DataSource = this.faultViewerSource;
@@ -95,42 +99,91 @@ namespace Project2Client
 
         private void hoursRepairing_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(hoursRepairing.Text, out hours))
+            //Prevent non digits from being entered;
+            int old = hours;
+
+            if (hoursRepairing.Text.Length > 0 && !Int32.TryParse(hoursRepairing.Text, out hours))
             {
-                this.hours = -1;
-                this.hoursRepairing.Text = "";
+                if (old == 0)
+                    this.hoursRepairing.Text = "";
+                else
+                {
+                    this.hoursRepairing.Text = old.ToString();
+                    this.hoursRepairing.SelectionStart = this.hoursRepairing.Text.Length;
+                    this.hoursRepairing.SelectionLength = 0;
+                    this.hours = old;
+                }
+            }
+            else
+            {
+                old = 0;
             }
         }
 
         private void commitRepair_Click(object sender, EventArgs e)
         {
+            validate_Date();
+            //Validate hours
             if (this.hours == -1)
                 MessageBox.Show("Enter number of hours worked.");
             else
             {
+                //Commit repair
                 Int32.TryParse(this.faultID.Text,out fault);
                 switch( tableName.Text )
                 {
                     case "Mechanical":
-                        this.dataSet.RepairsMF.Rows.Add(engNo, date, hours, fault);
-                        this.RepairsMFTableAdapter.Update(this.dataSet.RepairsMF);
+                        if ((this.dataSet.RepairsMF.Select("faultID = " + fault.ToString())).Length == 0)
+                        {
+                            this.dataSet.RepairsMF.Rows.Add(engNo, date, hours, fault);
+                            this.RepairsMFTableAdapter.Update(this.dataSet.RepairsMF);
+                            MessageBox.Show("Successful Update");
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Update Unsuccessful: Mechanical Fault#" + fault.ToString() + " has already been repaired.");
+                        }
                         break;
                     case "Electrical":
-                        this.dataSet.RepairsEF.Rows.Add(engNo, date, hours, fault);
-                        this.RepairsEFTableAdapter.Update(this.dataSet.RepairsEF);
+                        if (this.dataSet.RepairsEF.Select("faultID = " + fault.ToString()).Length == 0)
+                        {
+                            this.dataSet.RepairsEF.Rows.Add(engNo, date, hours, fault);
+                            this.RepairsEFTableAdapter.Update(this.dataSet.RepairsEF);
+                            MessageBox.Show("Successful Update");
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Update Unsuccessful: Electrical Fault#" + fault.ToString() + " has already been repaired.");
+                        }
                         break;
                     case "Other":
-                        this.dataSet.RepairsOF.Rows.Add(engNo, date, hours, fault);
-                        this.RepairsOFTableAdapter.Update(this.dataSet.RepairsOF);
+                        if (this.dataSet.RepairsOF.Select("faultID = " + fault.ToString()).Length == 0)
+                        {
+                            this.dataSet.RepairsOF.Rows.Add(engNo, date, hours, fault);
+                            this.RepairsOFTableAdapter.Update(this.dataSet.RepairsOF);
+                            MessageBox.Show("Successful Update");
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Update Unsuccessful: Other Fault#" + fault.ToString() + " has already been repaired.");
+                        }
                         break;
                 }
-                MessageBox.Show("Successful Update");
             }
                 
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
+            validate_Date();
+        }
+
+        private void validate_Date()
+        {
+            //Check date for proper formatting
             Regex fmt = new Regex("\\d\\d/\\d\\d/\\d\\d\\d\\d\\w*");
             string test = textBox1.Text;
             if (fmt.IsMatch(test))
@@ -139,6 +192,8 @@ namespace Project2Client
             {
                 textBox1.Text = "mm/dd/yyyy";
                 this.textBox1.Focus();
+                this.textBox1.SelectionStart = 0;
+                this.textBox1.SelectionLength = this.textBox1.Text.Length;
             }
         }
     }
