@@ -111,6 +111,9 @@
     <EmbeddedResource Include="EquipManagmentForm.resx">
       <DependentUpon>EquipManagmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MakeRepairForm3.resx">
+      <DependentUpon>MakeRepairForm3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RepairsManagementForm.resx">
       <DependentUpon>RepairsManagementForm.cs</DependentUpon>
     </EmbeddedResource>

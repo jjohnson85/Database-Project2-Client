@@ -36,11 +36,6 @@ namespace Project2Client
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MakeRepair_Click(object sender, EventArgs e)
         {
             if (int.TryParse(comboBox1.Text, out engNum))

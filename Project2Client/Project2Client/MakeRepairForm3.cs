@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,11 @@ namespace Project2Client
 {
     public partial class MakeRepairForm2 : Form
     {
+        private string date;
+        private int fault;
         private int hours;
         private int engNo;
+        private DataTable data;
 
         public MakeRepairForm2()
         {
@@ -93,9 +97,49 @@ namespace Project2Client
         {
             if (!Int32.TryParse(hoursRepairing.Text, out hours))
             {
-                this.hoursRepairing.Text = "<type integer>";
+                this.hours = -1;
+                this.hoursRepairing.Text = "";
             }
-            this.hours = -1;
+        }
+
+        private void commitRepair_Click(object sender, EventArgs e)
+        {
+            if (this.hours == -1)
+                MessageBox.Show("Enter number of hours worked.");
+            else
+            {
+                Int32.TryParse(this.faultID.Text,out fault);
+                switch( tableName.Text )
+                {
+                    case "Mechanical":
+                        this.dataSet.RepairsMF.Rows.Add(engNo, date, hours, fault);
+                        this.RepairsMFTableAdapter.Update(this.dataSet.RepairsMF);
+                        break;
+                    case "Electrical":
+                        this.dataSet.RepairsEF.Rows.Add(engNo, date, hours, fault);
+                        this.RepairsEFTableAdapter.Update(this.dataSet.RepairsEF);
+                        break;
+                    case "Other":
+                        this.dataSet.RepairsOF.Rows.Add(engNo, date, hours, fault);
+                        this.RepairsOFTableAdapter.Update(this.dataSet.RepairsOF);
+                        break;
+                }
+                MessageBox.Show("Successful Update");
+            }
+                
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            Regex fmt = new Regex("\\d\\d/\\d\\d/\\d\\d\\d\\d\\w*");
+            string test = textBox1.Text;
+            if (fmt.IsMatch(test))
+                date = test;
+            else
+            {
+                textBox1.Text = "mm/dd/yyyy";
+                this.textBox1.Focus();
+            }
         }
     }
 }

@@ -37,6 +37,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.hoursRepairing = new System.Windows.Forms.TextBox();
             this.faultViewer = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.faultViewer)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             this.commitRepair.TabIndex = 0;
             this.commitRepair.Text = "Make Repair";
             this.commitRepair.UseVisualStyleBackColor = true;
+            this.commitRepair.Click += new System.EventHandler(this.commitRepair_Click);
             // 
             // faultID
             // 
@@ -131,11 +134,30 @@
             this.faultViewer.Size = new System.Drawing.Size(384, 196);
             this.faultViewer.TabIndex = 8;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(210, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "On (mm/dd/yyyy)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(300, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
             // MakeRepairForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 300);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.faultViewer);
             this.Controls.Add(this.hoursRepairing);
             this.Controls.Add(this.label4);
@@ -175,5 +197,7 @@
         private System.Windows.Forms.TextBox hoursRepairing;
         private System.Windows.Forms.DataGridView faultViewer;
         private System.Windows.Forms.BindingSource faultIDSource;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
