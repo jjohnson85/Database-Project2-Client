@@ -40,8 +40,8 @@
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.s7110008DataSet = new Project2Client.s7110008DataSet();
             this.companyTableAdapter = new Project2Client.s7110008DataSetTableAdapters.CompanyTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
@@ -122,25 +122,25 @@
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // Save
             // 
-            this.button1.Location = new System.Drawing.Point(12, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Save.Location = new System.Drawing.Point(12, 52);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(75, 23);
+            this.Save.TabIndex = 1;
+            this.Save.Text = "Save";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // Delete
             // 
-            this.button2.Location = new System.Drawing.Point(93, 52);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Delete.Location = new System.Drawing.Point(93, 52);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 2;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -157,8 +157,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 411);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Delete);
+            this.Controls.Add(this.Save);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CMangamentForm";
             this.Text = "Company Management Form";
@@ -184,8 +184,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phone1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Save;
+        private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Label label2;
     }
 }
