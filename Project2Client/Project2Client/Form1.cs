@@ -41,5 +41,11 @@ namespace Project2Client
             EquipManagmentForm EQForm = new EquipManagmentForm();
             EQForm.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EngineerManagementForm ENForm = new EngineerManagementForm();
+            ENForm.ShowDialog();
+        }
     }
 }

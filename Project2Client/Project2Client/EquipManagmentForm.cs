@@ -16,5 +16,25 @@ namespace Project2Client
         {
             InitializeComponent();
         }
+
+        private void EquipManagmentForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 's7110008DataSet.Equipment' table. You can move, or remove it, as needed.
+            this.equipmentTableAdapter.Fill(this.s7110008DataSet.Equipment);
+
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.equipmentBindingSource.EndEdit();
+            this.equipmentTableAdapter.Update(this.s7110008DataSet.Equipment);
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.equipmentBindingSource.RemoveCurrent();
+        }
     }
 }

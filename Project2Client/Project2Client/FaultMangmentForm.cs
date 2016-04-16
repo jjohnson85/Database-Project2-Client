@@ -60,7 +60,7 @@ namespace Project2Client
             this.mechFaultTableAdapter.Fill(this.s7110008DataSet.MechFault);
             // TODO: This line of code loads data into the 's7110008DataSet.ElectFault' table. You can move, or remove it, as needed.
             this.electFaultTableAdapter.Fill(this.s7110008DataSet.ElectFault);
-            this.dataGridView1.DataSource = this.bindingSource1;
+            //this.dataGridView1.DataSource = this.bindingSource1;
         }
 
         //Change fault-type table displayed

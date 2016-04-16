@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.CManageButton = new System.Windows.Forms.Button();
-            this.EngManageButton = new System.Windows.Forms.Button();
+            this.RepairsManageButton = new System.Windows.Forms.Button();
             this.FManageButton = new System.Windows.Forms.Button();
             this.EquipManageButton = new System.Windows.Forms.Button();
+            this.EngManagmentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CManageButton
@@ -40,19 +41,19 @@
             this.CManageButton.Name = "CManageButton";
             this.CManageButton.Size = new System.Drawing.Size(152, 53);
             this.CManageButton.TabIndex = 0;
-            this.CManageButton.Text = "Company Managment";
+            this.CManageButton.Text = "Company Management";
             this.CManageButton.UseVisualStyleBackColor = true;
             this.CManageButton.Click += new System.EventHandler(this.CManageButton_Click);
             // 
-            // EngManageButton
+            // RepairsManageButton
             // 
-            this.EngManageButton.Location = new System.Drawing.Point(63, 110);
-            this.EngManageButton.Name = "EngManageButton";
-            this.EngManageButton.Size = new System.Drawing.Size(152, 53);
-            this.EngManageButton.TabIndex = 1;
-            this.EngManageButton.Text = "Engineer Managment";
-            this.EngManageButton.UseVisualStyleBackColor = true;
-            this.EngManageButton.Click += new System.EventHandler(this.EngManageButton_Click);
+            this.RepairsManageButton.Location = new System.Drawing.Point(63, 110);
+            this.RepairsManageButton.Name = "RepairsManageButton";
+            this.RepairsManageButton.Size = new System.Drawing.Size(152, 53);
+            this.RepairsManageButton.TabIndex = 1;
+            this.RepairsManageButton.Text = "Repairs Management";
+            this.RepairsManageButton.UseVisualStyleBackColor = true;
+            this.RepairsManageButton.Click += new System.EventHandler(this.EngManageButton_Click);
             // 
             // FManageButton
             // 
@@ -60,28 +61,39 @@
             this.FManageButton.Name = "FManageButton";
             this.FManageButton.Size = new System.Drawing.Size(152, 53);
             this.FManageButton.TabIndex = 2;
-            this.FManageButton.Text = "Fault Managment";
+            this.FManageButton.Text = "Fault Management";
             this.FManageButton.UseVisualStyleBackColor = true;
             this.FManageButton.Click += new System.EventHandler(this.FManageButton_Click);
             // 
             // EquipManageButton
             // 
-            this.EquipManageButton.Location = new System.Drawing.Point(64, 228);
+            this.EquipManageButton.Location = new System.Drawing.Point(63, 287);
             this.EquipManageButton.Name = "EquipManageButton";
             this.EquipManageButton.Size = new System.Drawing.Size(152, 53);
             this.EquipManageButton.TabIndex = 3;
-            this.EquipManageButton.Text = "Equipment Managment";
+            this.EquipManageButton.Text = "Equipment Management";
             this.EquipManageButton.UseVisualStyleBackColor = true;
             this.EquipManageButton.Click += new System.EventHandler(this.EquipManageButton_Click);
+            // 
+            // EngManagmentButton
+            // 
+            this.EngManagmentButton.Location = new System.Drawing.Point(63, 228);
+            this.EngManagmentButton.Name = "EngManagmentButton";
+            this.EngManagmentButton.Size = new System.Drawing.Size(152, 53);
+            this.EngManagmentButton.TabIndex = 4;
+            this.EngManagmentButton.Text = "Engineer Management";
+            this.EngManagmentButton.UseVisualStyleBackColor = true;
+            this.EngManagmentButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // InitEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 328);
+            this.ClientSize = new System.Drawing.Size(278, 365);
+            this.Controls.Add(this.EngManagmentButton);
             this.Controls.Add(this.EquipManageButton);
             this.Controls.Add(this.FManageButton);
-            this.Controls.Add(this.EngManageButton);
+            this.Controls.Add(this.RepairsManageButton);
             this.Controls.Add(this.CManageButton);
             this.Name = "InitEntryForm";
             this.Text = "Select Task";
@@ -92,9 +104,10 @@
         #endregion
 
         private System.Windows.Forms.Button CManageButton;
-        private System.Windows.Forms.Button EngManageButton;
+        private System.Windows.Forms.Button RepairsManageButton;
         private System.Windows.Forms.Button FManageButton;
         private System.Windows.Forms.Button EquipManageButton;
+        private System.Windows.Forms.Button EngManagmentButton;
     }
 }
 
