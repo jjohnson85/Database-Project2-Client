@@ -59,6 +59,12 @@
     <Compile Include="EngineerManagementForm.Designer.cs">
       <DependentUpon>EngineerManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MakeRepairForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakeRepairForm3.Designer.cs">
+      <DependentUpon>MakeRepairForm3.cs</DependentUpon>
+    </Compile>
     <Compile Include="RepairsManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>

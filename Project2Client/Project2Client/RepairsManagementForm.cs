@@ -45,7 +45,7 @@ namespace Project2Client
         {
             if (int.TryParse(comboBox1.Text, out engNum))
             {
-                MakeRepairForm Repairer = new MakeRepairForm(engNum);
+                MakeRepairForm2 Repairer = new MakeRepairForm2(engNum);
                 Repairer.ShowDialog();
             }
             else
