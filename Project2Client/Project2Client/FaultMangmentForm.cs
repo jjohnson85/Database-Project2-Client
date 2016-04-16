@@ -23,6 +23,7 @@ namespace Project2Client
         //Save
         private void button1_Click(object sender, EventArgs e)
         {
+            //Get text from combo box to use in swictch to select table to display
             select = comboBox1.Text;
             switch (select)
             {
@@ -54,13 +55,9 @@ namespace Project2Client
 
         private void FaultMangmentForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 's7110008DataSet.OtherFault' table. You can move, or remove it, as needed.
             this.otherFaultTableAdapter.Fill(this.s7110008DataSet.OtherFault);
-            // TODO: This line of code loads data into the 's7110008DataSet.MechFault' table. You can move, or remove it, as needed.
             this.mechFaultTableAdapter.Fill(this.s7110008DataSet.MechFault);
-            // TODO: This line of code loads data into the 's7110008DataSet.ElectFault' table. You can move, or remove it, as needed.
             this.electFaultTableAdapter.Fill(this.s7110008DataSet.ElectFault);
-            //this.dataGridView1.DataSource = this.bindingSource1;
         }
 
         //Change fault-type table displayed

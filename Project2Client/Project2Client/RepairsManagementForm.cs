@@ -21,7 +21,7 @@ namespace Project2Client
 
         private void EngManagementForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 's7110008DataSet.AllRepairs' table. You can move, or remove it, as needed.
+            //Fill Data Tables
             this.allRepairsTableAdapter.Fill(this.s7110008DataSet.AllRepairs);
             this.engineerTableAdapter.Fill(this.s7110008DataSet.Engineer);
 
@@ -56,6 +56,7 @@ namespace Project2Client
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Filter the allRepairs binding to only show tuples whith engNo = value in combo box
             try
             {
                 allRepairsBindingSource.Filter = "engNo =" + comboBox1.Text;

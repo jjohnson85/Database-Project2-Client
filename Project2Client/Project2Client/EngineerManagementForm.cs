@@ -19,13 +19,14 @@ namespace Project2Client
 
         private void EngineerManagementForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 's7110008DataSet.Engineer' table. You can move, or remove it, as needed.
+            //Fill table adapter
             this.engineerTableAdapter.Fill(this.s7110008DataSet.Engineer);
 
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
+            //Save by ending edit and updating tables
             this.Validate();
             this.engineerBindingSource.EndEdit();
             this.engineerTableAdapter.Update(this.s7110008DataSet.Engineer);
@@ -33,6 +34,8 @@ namespace Project2Client
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            //Delete by removing currently selected row from table/binding source
+            //Must save to commit this change
             this.Validate();
             this.engineerBindingSource.RemoveCurrent();
         }
