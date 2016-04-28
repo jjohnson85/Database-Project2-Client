@@ -57,11 +57,13 @@
           div.friendbox:hover{
               height: 500px;
           }
-          div.friend {
+          .friend {
               width:240px;
               height:auto;
               margin-top:5px;
               margin-bottom:5px;
+	      border-radius:1px;
+	      font-size:24px;
               background-color: aliceblue;
           }
           div.postbox {
@@ -97,6 +99,9 @@
 <body>   
     <div class="hdiv">
         MyBook
+	<?php
+		echo $_SESSION['USER'];
+	?>
     </div>
     <div class="menudiv">
         <form>
@@ -115,17 +120,41 @@
         </form>
     </div>
     <div class="friendbox">
-       ONLINE FRIENDS GO HERE
+       ONLINE FRIENDS GO HERE<br>
         <!-- PHP Query and gen html for friends here-->
         <!-- use data from login session include('session.php')-->
         <!-- PHP wil echo the friend divs filled with that friends info-->
+	<?php
+	  $link = mysql_connect( "Services1.mcs.sdsmt.edu", "s7229736_s16", "Change_Me");
+
+	  mysql_select_db("db_7229736_s16");
+
+	  $friend = $_SESSION['USERID'];
+
+	  $query = mysql_query("SELECT M.uName FROM User AS M JOIN Friends
+				 ON M.idUser = User_idUserMain JOIN User AS F
+				 ON User_idUserFriend = F.idUser WHERE F.idUser 
+				= $friend GROUP BY M.uName");
+	  
+	  if($query)
+	    while( $row = mysql_fetch_row($query))
+	    {
+	  	  for( $i=0; $i< mysql_num_fields($query); $i++ )
+		  {
+			  echo '<div class = "friend">';
+		     	  echo $row[$i];
+			  echo '</div>';
+		  }
+	    }
+	
+	?>
         <div class="friend">
         FRIEND
         </div>
         <div class="friend">
         FRIEND 2
         </div>
-        <form>
+        <form action="friendspage.php">
             <input type="submit" name="Friends" class="menubtn" value="More...">
             
             </input>

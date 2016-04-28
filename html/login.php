@@ -1,4 +1,4 @@
-<!--php here include('login.php')-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -55,14 +55,47 @@
             <div class="loginheader">
                 MyBook
             </div>
-            <form class="inpform">
+
+
+            <form class="inpform" method="post">
+
                 Username:<br>
                 <input type="text" class="inpbox" placeholder="Hello World" name="USERNAME"><br>
                 Password:<br>
                 <input type="password" class="inpbox" placeholder="********" name="PASSWORD"><br>
                 <input type="submit" value="Login" class="sbutton" name="SUBMIT">
             </form>
-        </div>
-    
+		<!--PHP BEGINS HERE-->
+		<?php
+		  session_start( );
+		  $link = mysql_connect ("Services1.mcs.sdsmt.edu", "s7229736_s16", "Change_Me");
+                  mysql_select_db("db_7229736_s16");
+	          //$login = $link->prepare("Select uName FROM User WHERE uName=? AND pWord=?");
+		  //$login->bind_param("ss", $user, $pass);
+		  
+		  $user = $_POST['USERNAME'];
+		  $pass = $_POST['PASSWORD'];
+		  //$login->execute( );
+		  $login = mysql_query("SELECT uName, idUser FROM User WHERE uName='$user'AND
+		  pWord = '$pass'");
 
+
+		  if(mysql_num_rows($login)==0)
+		  {
+		    echo "invalid username or password";
+		  }
+		  else
+		  {
+		    $row = mysql_fetch_row($login);
+		    $_SESSION["USER"] = $row[0];
+		    $_SESSION["USERID"] = $row[1];
+		    header('Location: http://dev.mcs.sdsmt.edu/~7229736/main.php');
+		  }
+
+		  mysql_close($link);
+		?>
+        </div>
     </body>
+
+
+</html>
