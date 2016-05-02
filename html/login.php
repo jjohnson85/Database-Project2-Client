@@ -68,31 +68,27 @@
 		<!--PHP BEGINS HERE-->
 		<?php
 		  session_start( );
-		  $link = mysql_connect ("Services1.mcs.sdsmt.edu", "s7229736_s16", "Change_Me");
-                  mysql_select_db("db_7229736_s16");
-	          //$login = $link->prepare("Select uName FROM User WHERE uName=? AND pWord=?");
-		  //$login->bind_param("ss", $user, $pass);
-		  
+		  $link = mysqli_connect("Services1.mcs.sdsmt.edu", "s7229736_s16",
+					 "Change_Me", "db_7229736_s16");
 		  $user = $_POST['USERNAME'];
 		  $pass = $_POST['PASSWORD'];
-		  //$login->execute( );
-		  $login = mysql_query("SELECT uName, idUser FROM User WHERE uName='$user'AND
-		  pWord = '$pass'");
 
-
-		  if(mysql_num_rows($login)==0)
+	          $login = mysqli_query($link, "SELECT uName, idUser FROM
+						 User WHERE uName='$user' AND pWord='$pass'");
+		
+		  if(mysqli_num_rows($login)==0)
 		  {
 		    echo "invalid username or password";
 		  }
 		  else
 		  {
-		    $row = mysql_fetch_row($login);
+		    $row = mysqli_fetch_row($login);
 		    $_SESSION["USER"] = $row[0];
 		    $_SESSION["USERID"] = $row[1];
-		    header('Location: http://dev.mcs.sdsmt.edu/~7229736/main.php');
+		    header('Location: main.php');
 		  }
 
-		  mysql_close($link);
+		  mysqli_close($link);
 		?>
         </div>
     </body>

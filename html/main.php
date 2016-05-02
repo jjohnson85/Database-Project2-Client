@@ -1,5 +1,8 @@
 <!--Php here for include('session.php')-->
 <!DOCTYPE html>
+<?php
+	ob_start( );
+?>
 <html>
   <head>
       <!-- INTERNAL CSS GOES HERE IN THE HEAD -->
@@ -49,7 +52,6 @@
               border-right-style:groove;
               border-right-width: 2px;
               margin-top: 5px;
-              margin-right: 5px;
               float:left;
               transition: height 2s;
               overflow: hidden;
@@ -68,16 +70,37 @@
           }
           div.postbox {
               width:auto;
-              height:1000px;
+              height:auto;
               background-color:aliceblue;
               padding: 5px;
               margin-left: 0px;
               margin-top: 5px;
           }
+	  div.sub_postbox{
+              width:auto;
+	      height:auto;
+	      position:static;
+	      background-color:aliceblue;
+	      margin-left:260px;
+	  }
           div.post {
-              
-              
+              width:auto;
+	      height:auto;
+	      background-color:white;
+              margin-bottom: 20px;
+	      margin-left: 2px;
+	      padding: 5px;
+	      word-wrap: break-word;
+	      border-style: groove;
           }
+	  .make_post {
+	      width: 500px;
+	      height: 100px;
+              background-color:white;
+	      margin-top: 10px;
+	      margin-left: 2px;
+
+	  }
           div.reply{
               
               
@@ -104,7 +127,7 @@
 	?>
     </div>
     <div class="menudiv">
-        <form>
+        <form method="post">
             <input type="submit" value="My Profile" class="menubtn">
             
             </input>
@@ -114,54 +137,144 @@
             <input type=submit value="Home" class="menubtn">
         
             </input>
-            <input type="submit" value="Logout" class="menubtn">
+            <input type="submit" value="Logout" class="menubtn" name="logout">
                 <!--Logout here with php stuff and redirect to login page-->
+		<?php
+			if(isset($_POST['logout']) )
+			{
+				session_destroy( );
+				header( 'Location: login.php');
+				exit();
+			}
+		?>
             </input>
         </form>
     </div>
     <div class="friendbox">
-       ONLINE FRIENDS GO HERE<br>
+       Your Friends<br>
         <!-- PHP Query and gen html for friends here-->
         <!-- use data from login session include('session.php')-->
         <!-- PHP wil echo the friend divs filled with that friends info-->
 	<?php
-	  $link = mysql_connect( "Services1.mcs.sdsmt.edu", "s7229736_s16", "Change_Me");
-
-	  mysql_select_db("db_7229736_s16");
-
+	  $link = mysqli_connect( "Services1.mcs.sdsmt.edu",
+	  "s7229736_s16", "Change_Me", "db_7229736_s16" );
+	  
 	  $friend = $_SESSION['USERID'];
 
-	  $query = mysql_query("SELECT M.uName FROM User AS M JOIN Friends
+	  $query = mysqli_query( $link, "SELECT M.uName FROM User AS M JOIN Friends
 				 ON M.idUser = User_idUserMain JOIN User AS F
 				 ON User_idUserFriend = F.idUser WHERE F.idUser 
-				= $friend GROUP BY M.uName");
-	  
-	  if($query)
-	    while( $row = mysql_fetch_row($query))
-	    {
-	  	  for( $i=0; $i< mysql_num_fields($query); $i++ )
-		  {
-			  echo '<div class = "friend">';
-		     	  echo $row[$i];
-			  echo '</div>';
-		  }
-	    }
-	
+				 = $friend GROUP BY M.uName" );
+	   
+	  while( $row = mysqli_fetch_row($query) )
+	  {
+		echo "<div class = friend>".$row[0]."</div>";
+	  }
 	?>
-        <div class="friend">
-        FRIEND
-        </div>
-        <div class="friend">
-        FRIEND 2
-        </div>
-        <form action="friendspage.php">
-            <input type="submit" name="Friends" class="menubtn" value="More...">
-            
-            </input>
-        </form>
+
+
     </div>
     <div class="postbox">
-        POSTS GO HERE
+      <div class="sub_postbox">
+	  Friends Posts
+	  <!-- List posts here, post's must be made by friends -->
+	  <?php
+	 
+	  //Query gets all your friends Posts 
+	  $postquery = mysqli_query($link, "SELECT tstamp, likes, txt, uName, idPost FROM
+	  Post JOIN User ON idUser = User_idUser JOIN (SELECT User_idUserFriend FROM Friends
+	  WHERE User_idUserMain = $friend) AS F ON User_idUser = F.User_idUserFriend
+	  ORDER BY tstamp DESC LIMIT 10"); 
+
+
+	  if($postquery)
+	    while( $row = mysqli_fetch_row($postquery))
+	    {
+
+		echo '<div class = "post">';
+		echo 'Post Made On: ' . $row[0] . ' By: ' . $row[3];
+		echo '<br>';  
+		echo $row[2];
+		echo '<br>';
+		echo $row[1] . ' Likes';
+		echo '<br><form method="get"><input type="submit" value="Like"
+		     name="like"></input><input type=
+		     "hidden" name="liked" value="'. $row[4] . '"</input></form>';
+		echo '</div>';
+	
+		
+	   }
+
+	   if($_GET['liked'])
+	   {
+	      $postid = $_GET['liked'];
+              $likeqry = mysqli_query($link, "UPDATE Post SET likes =
+		 likes+1 WHERE idPost='$postid'");
+	      header( 'Location: main.php');
+	      exit( );
+	   }
+	  ?>
+
+	</div>
+	<div class="sub_postbox">
+	My Posts
+	<?php
+	$postquery = mysqli_query($link, "SELECT tstamp, likes, txt, uName, idPost FROM
+	Post JOIN User ON idUser = User_idUser WHERE idUser = $friend ORDER BY tstamp DESC
+	LIMIT 10");
+	
+	if($postquery)
+	    while( $row = mysqli_fetch_row($postquery))
+	    {
+
+		echo '<div class = "post">';
+		echo 'Post Made On: ' . $row[0] . ' By: ' . $row[3];
+		echo '<br>';  
+		echo $row[2];
+		echo '<br>';
+		echo $row[1] . ' Likes';
+		echo '<br><form method="get"><input type="submit" value="Like"
+		     name="like"></input><input type=
+		     "hidden" name="liked" value="'. $row[4] . '"</input></form>';
+		echo '</div>';
+	
+		
+	   }
+
+	?>
+                <form id="post_form" method="get" >
+
+
+		<!--End post listing-->
+
+		<form id="post_form" method="get" >
+			<textarea class = "make_post" name ="textpost" cols='100' rows='10' >
+
+			</textarea>
+
+			<input type="submit" value="Post" name="inppost" >
+
+			</input>
+		</form>
+
+	   <?php
+		if(isset($_GET['textpost']))
+		{
+		$pstmt = mysqli_prepare( $link, "INSERT INTO Post( idPost, tStamp, likes,
+						 txt, User_idUser ) VALUES( ?, NOW(), ?, ?, ?)");
+		mysqli_stmt_bind_param( $pstmt, "iisi", $id, $likes, $text, $user );
+		$idget = mysqli_query( $link, "SELECT MAX(idPost) FROM Post");
+		$idrow = mysqli_fetch_row( $idget );
+		$id = $idrow[0]+1;	
+		$likes = 0;
+		$text = $_GET['textpost'];
+		$user = $_SESSION['USERID'];	
+		mysqli_stmt_execute($pstmt);
+		header('Location: main.php');
+		exit();
+		}
+	   ?>
+	</div>
     </div>
     <div class="footbar">
         Copyright © 2010 by lulwut inc.
