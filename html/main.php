@@ -131,11 +131,21 @@
             <input type="submit" value="My Profile" class="menubtn">
             
             </input>
-            <input type=submit value="Friends" class="menubtn">
-        
+            <input type=submit value="Friends" class="menubtn" name="friendspage">
+        	<?php
+			if(isset($_POST['friendspage']))
+			{
+				header( 'Location: friendspage.php');
+			}
+		?>
             </input>
-            <input type=submit value="Home" class="menubtn">
-        
+            <input type=submit value="Home" class="menubtn" name="homepage">
+		<?php
+			if(isset($_POST['homepage']))
+			{
+				header( 'Location: main.php');
+			}
+		?>
             </input>
             <input type="submit" value="Logout" class="menubtn" name="logout">
                 <!--Logout here with php stuff and redirect to login page-->
@@ -164,7 +174,7 @@
 	  $query = mysqli_query( $link, "SELECT M.uName FROM User AS M JOIN Friends
 				 ON M.idUser = User_idUserMain JOIN User AS F
 				 ON User_idUserFriend = F.idUser WHERE F.idUser 
-				 = $friend GROUP BY M.uName" );
+				 = $friend GROUP BY M.uName LIMIT 10" );
 	   
 	  while( $row = mysqli_fetch_row($query) )
 	  {
