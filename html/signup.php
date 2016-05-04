@@ -18,7 +18,7 @@
                 text-align: center;
                 color:aliceblue;
                 padding-top:5px;
-                padding-bottom:5px;
+                padding-bottom:10px;
                 margin-top: 100px;
                 align-self: center;
                 box-shadow: 2px 2px 10px #888888;
@@ -49,15 +49,17 @@
                 border-radius: 5px;
             }
             .inpform {
+            		font-family: serif;
                 font-size:20px;
                 text-shadow:  2px 2px 10px black;
             }
-            err {
-            	color: red;
+            .err {
+            	color: white;
             }
         </style>
     </head>
     <body>
+    	
         <div class="loginbox" >
             <div class="loginheader">
                 MyBook
@@ -65,69 +67,110 @@
 						
 
             <form class="inpform" method="post">
-            
+            			<!--PHP BEGINS HERE-->
+								<?php
+									if(isset($_POST['LOGIN']))
+									{
+										session_destroy();
+										header( "Location: login.php" );
+									}
+									//session_start( );
+									$link = mysqli_connect("Services1.mcs.sdsmt.edu", "s7229736_s16",
+											 "Change_Me", "db_7229736_s16");
+									if(isset($_POST['USERNAME']))
+									{
+										$user = $_POST['USERNAME'];
+										$pass = $_POST['PASSWORD'];
+										$cpas = $_POST['CPASWORD'];
+										$email = $_POST['EMAIL'];
+							
+										unset ($_SESSION['USER']);
+										session_unregister($USER);
+										$_SESSION["USER"] = $user;
+										
+										unset ($_SESSION['EMAIL']);
+										session_unregister($EMAIL);
+										$_SESSION["EMAIL"] = $email;
+										
+										$checkname = mysqli_query($link, "SELECT * FROM User WHERE uName = '$user'");
+									 	if(mysqli_num_rows($checkname)==0 )
+									 	  $badname = false;
+									 	else
+									 		$badname = true;
+									 	
+									 	if(mysqli_num_rows($checkname)==0 && $user != "")
+									 	{
+											$getid = mysqli_query($link,"SELECT MAX(idUser) FROM User");
+						
+											if(mysqli_num_rows($getid)!=0)
+											{
+												$idr = mysqli_fetch_row($getid);
+												$id = $idr[0] + 1;
+						
+												if( $pass == $cpas )
+											 	{  
+													 $login = mysqli_query($link, "INSERT INTO User (idUser,uName,pWord,email)
+													 VALUES ($id,'$user','$pass','$email')");
+													 mysqli_close($link);
+													 $_SESSION["USER"] = $user;
+													 $_SESSION["USERID"] = $id;
+													 header("Location: editprofile.php");
+												}
+												else
+												{
+													mysqli_close($link);
+													echo "<p class=err>*Provided passwords are not equal.</p>";
+												}
+											}
+											else
+											{
+												mysqli_close($link);
+												echo "error";
+											}
+										}
+										if( $user == "" )
+											echo "<p class = \"err\">*Enter a valid username</p>";
+										else if( $badname )
+										{
+												echo "<p class = \"err\">*'$user' is already in use.<br> Try another username...</p>";
+										}
+										mysqli_close($link);	
+									}
+								?>
+            		<!--PHP ENDS HERE-->
+            		
                 Username:<br>
-                <input type="text" class="inpbox" placeholder="Hello World" name="USERNAME"><br>
+                <?php
+                	if(isset($_SESSION["USER"]) && $_SESSION["USER"] != "")
+                	{
+                		$user = $_SESSION["USER"];
+                		echo "<input type=text class=inpbox value='$user' name=\"USERNAME\"><br>";
+                	}
+                	else
+                	{
+                		echo "<input type=text class=inpbox placeholder= \"Hello World\" name= \"USERNAME\"><br>";
+                	}
+                ?>
                 Email:<br>
-                <input type="text" class="inpbox" placeholder="youremail@email.com" name = "EMAIL"><br>
+                <?php
+                	if(isset($_SESSION["EMAIL"]) && $_SESSION["EMAIL"] != "")
+                	{
+                		$email = $_SESSION["EMAIL"];
+                		echo "<input type=text class=inpbox value='$email' name=\"EMAIL\"><br>";
+                	}
+                	else
+                	{
+                		echo "<input type=text class=inpbox placeholder=\"youremail@email.com\" name= \"EMAIL\"><br>";
+                	}
+                ?>
                 Password:<br>
                 <input type="password" class="inpbox" placeholder="********" name="PASSWORD"><br>
                 Confirm Password:<br>
                 <input type="password" class="inpbox" placeholder="********" name="CPASWORD"><br>
-                <input type="submit" value="Sign Up" class="sbutton" name="SUBMIT">
+                <input type="submit" value="Sign Up" class="sbutton" name="SUBMIT"><br>OR<br>
+                <input type="submit" value="Back to Login" class="sbutton" name="LOGIN">
                 
             </form>
-            
-		<!--PHP BEGINS HERE-->
-		<?php
-		  session_start( );
-		  $link = mysqli_connect("Services1.mcs.sdsmt.edu", "s7229736_s16",
-					 "Change_Me", "db_7229736_s16");
-			if(isset($_POST['USERNAME']))
-			{
-		  	$user = $_POST['USERNAME'];
-		  	$pass = $_POST['PASSWORD'];
-      	$cpas = $_POST['CPASWORD'];
-      	$email = $_POST['EMAIL'];
-      
-		    $checkname = mysqli_query($link, "SELECT * FROM User WHERE uName = '$user'");
-		   	
-		   	
-		   	if(mysqli_num_rows($checkname)==0 && $user != "")
-		   	{
-				  $getid = mysqli_query($link,"SELECT MAX(idUser) FROM User");
-				  
-				  if(mysqli_num_rows($getid)!=0)
-				  {
-				  	$idr = mysqli_fetch_row($getid);
-				  	$id = $idr[0] + 1;
-				  
-						if( $pass == $cpas )
-					 	{  
-							 $login = mysqli_query($link, "INSERT INTO User (idUser,uName,pWord,email)
-							 VALUES ($id,'$user','$pass','$email')");
-							 mysqli_close($link);
-							 header("Location: login.php");
-						}
-						else
-						{
-							mysqli_close($link);
-							echo "<p class = \"err\">Provided passwords not equal</p>";
-						}
-					}
-					else
-					{
-						mysqli_close($link);
-				  	echo "error";
-				  }
-				}
-				if( $user == "" )
-					echo "Enter a valid username";
-				else
-					echo "'$user' already exists.";
-		    mysqli_close($link);	
-			}
-		?>
         </div>
     </body>
 

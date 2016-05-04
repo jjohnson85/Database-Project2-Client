@@ -93,6 +93,11 @@
 	      word-wrap: break-word;
 	      border-style: groove;
           }
+          .timestamp{
+          	text-align:right;
+          	font-size:10px;
+          	color: #0000AA;
+          }
 	  .make_post {
 	      width: 500px;
 	      height: 100px;
@@ -128,8 +133,13 @@
     </div>
     <div class="menudiv">
         <form method="post">
-            <input type="submit" value="My Profile" class="menubtn">
-            
+            <input type="submit" value="My Profile" class="menubtn" name="profile">
+            <?php
+			if(isset($_POST['profile']))
+			{
+				header( 'Location: profile.php');
+			}
+		?>
             </input>
             <input type=submit value="Friends" class="menubtn" name="friendspage">
         	<?php
@@ -186,7 +196,7 @@
     </div>
     <div class="postbox">
       <div class="sub_postbox">
-	  Friends Posts
+	  <span style="font-size:24px;font-weight:bold;">News Feed</span>
 	  <!-- List posts here, post's must be made by friends -->
 	  <?php
 	 
@@ -202,14 +212,17 @@
 	    {
 
 		echo '<div class = "post">';
-		echo 'Post Made On: ' . $row[0] . ' By: ' . $row[3];
-		echo '<br>';  
-		echo $row[2];
-		echo '<br>';
-		echo $row[1] . ' Likes';
-		echo '<br><form method="get"><input type="submit" value="Like"
+		echo '<span class= timestamp>Post Made On: ' . $row[0] . ' By: ' . $row[3] . '</span><br>';
+		echo '<span style="font-weight:bold;">';
+		echo $row[3];
+		echo ':</span>  ';
+		echo $row[2] . '<br>';
+		echo '<span style="font-size:12px;">';
+		echo $row[1] . ' Likes</span><br>';
+		echo '<form method="get"><input type="submit" value="Like"
 		     name="like"></input><input type=
-		     "hidden" name="liked" value="'. $row[4] . '"</input></form>';
+		     "hidden" name="liked" value="'. $row[4] . '"</input>';
+		echo '</form>';
 		echo '</div>';
 	
 		
@@ -227,7 +240,7 @@
 
 	</div>
 	<div class="sub_postbox">
-	My Posts
+	<span style="font-size:24px;font-weight:bold;">My Posts</span>
 	<?php
 	$postquery = mysqli_query($link, "SELECT tstamp, likes, txt, uName, idPost FROM
 	Post JOIN User ON idUser = User_idUser WHERE idUser = $friend ORDER BY tstamp DESC
@@ -238,14 +251,17 @@
 	    {
 
 		echo '<div class = "post">';
-		echo 'Post Made On: ' . $row[0] . ' By: ' . $row[3];
-		echo '<br>';  
-		echo $row[2];
-		echo '<br>';
-		echo $row[1] . ' Likes';
-		echo '<br><form method="get"><input type="submit" value="Like"
+		echo '<span class= timestamp>Post Made On: ' . $row[0] . ' By: ' . $row[3] . '</span><br>';
+		echo '<span style="font-weight:bold;">';
+		echo $row[3];
+		echo ':</span>  ';
+		echo $row[2] . '<br>';
+		echo '<span style="font-size:12px;">';
+		echo $row[1] . ' Likes</span><br>';
+		echo '<form method="get"><input type="submit" value="Like"
 		     name="like"></input><input type=
-		     "hidden" name="liked" value="'. $row[4] . '"</input></form>';
+		     "hidden" name="liked" value="'. $row[4] . '"</input>';
+		echo '</form>';
 		echo '</div>';
 	
 		
@@ -287,7 +303,6 @@
 	</div>
     </div>
     <div class="footbar">
-        Copyright © 2010 by lulwut inc.
     </div>
 </body>
 </html>

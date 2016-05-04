@@ -73,8 +73,13 @@
     </div>
     <div class="menudiv">
         <form method="post">
-            <input type="submit" value="My Profile" class="menubtn">
-            
+            <input type="submit" value="My Profile" class="menubtn" name="profile">
+            <?php
+			if(isset($_POST['profile']))
+			{
+				header( 'Location: profile.php');
+			}
+		?>
             </input>
             <input type=submit value="Friends" class="menubtn" name="friendspage">
         	<?php

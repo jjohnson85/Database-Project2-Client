@@ -10,11 +10,12 @@
             div.loginbox{
                 background-color:cornflowerblue;
                 width:500px;
-                height:300px;
+                /*height:300px*/;
                 margin:auto;
                 text-align: center;
                 color:aliceblue;
                 padding-top:5px;
+                padding-bottom:10px;
                 margin-top: 100px;
                 align-self: center;
                 box-shadow: 2px 2px 10px #888888;
@@ -63,7 +64,17 @@
                 <input type="text" class="inpbox" placeholder="Hello World" name="USERNAME"><br>
                 Password:<br>
                 <input type="password" class="inpbox" placeholder="********" name="PASSWORD"><br>
-                <input type="submit" value="Login" class="sbutton" name="SUBMIT">
+                <input type="submit" value="Login" class="sbutton" name="SUBMIT"> <br>OR<br>
+                <input type="submit" value="Sign Up" class="sbutton" name="signup">
+        					<?php
+									if(isset($_POST['signup']))
+									{
+										$_SESSION["USER"] = $_POST['USERNAME'];
+		    						$_SESSION["PASS"] = $_POST['PASSWORD'];
+										header( 'Location: signup.php');
+									}
+									?>
+            </input>
             </form>
 		<!--PHP BEGINS HERE-->
 		<?php

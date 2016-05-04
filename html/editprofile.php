@@ -76,7 +76,7 @@
         MyBook
     </div>
     <div class="menudiv">
-        <form method= "POST">
+        <form method="POST">
             <input type="submit" value="My Profile" class="menubtn" name="profile">
             <?php
 			if(isset($_POST['profile']))
@@ -116,52 +116,77 @@
         
     </div>
     <div class="profilewrapper">
+    <form method="POST">
     <?php
-    
-	  $link = mysqli_connect( "Services1.mcs.sdsmt.edu",
-	  "s7229736_s16", "Change_Me", "db_7229736_s16" );
-	  if(isset($_POST["EDIT"]))
-    {
-    	mysqli_close($link);
-    	header("Location: editprofile.php");
-    }
-	  $user = $_SESSION["USERID"];
-	  $uname = $_SESSION["USER"];
-	  if( isset($_SESSION["FRIEND"]) )
-	  {
-	  	$pick = $_SESSION["FRIEND"];
-	  }
-	  else
-	  {
-	  	$pick = $user;
-	  }
-	  
-	  $profile = mysqli_query( $link , "SELECT * FROM Profile WHERE User_idUser = $pick");
-	  if( $profile )
-	  {
-	  	$row = mysqli_fetch_row($profile);
-	  	$fname = $row[1];
-	  	$lname = $row[2];
-	  	$fgame = $row[3];
-	  	$hscore = $row[4];
-	  	$lkgame = $row[5];
-	  	echo 'Name: ' . $fname . ' ' . $lname . '<br>';
-	  	echo 'Favorite Game: ' . $fgame . '<br>';
-	  	echo 'High Score: ' . $hscore . '<br>';
-	  	echo 'Other Games ' . $fname . ' Enjoys: ' . $lkgame . '<br>';
-	  }
-	  else
-	  {
-	  	if( $user == $pick )
-	  	header("Location: editprofile.php");
-	  }
-	  if( $user == $pick )
-	  {
-	  	echo '<form method=POST ><input type="submit" value="Edit Profile" ' .
-	  		' class=sbutton name="EDIT"></input></form>';
-	  }
-	  
+    	$link = mysqli_connect( "Services1.mcs.sdsmt.edu",
+	  			"s7229736_s16", "Change_Me", "db_7229736_s16" );
+	  		$user = $_SESSION["USERID"];
+	  		
+	  		$profile = mysqli_query($link, "SELECT * FROM Profile WHERE User_idUser = $user" );
+	  		if( !$profile )
+	  			echo "Why why why<br>";
+	  			
+	  		if( !isset($_POST["UPDATE"]) && mysqli_num_rows($profile) != 0)
+	  		{
+	  			$tmprow = mysqli_fetch_row($profile);
+	  			$fname=$tmprow[1];
+	  			$lname=$tmprow[2];
+	  			$fgame=$tmprow[3];
+	  			$hscore=$tmprow[4];
+	  			$lkgame=$tmprow[5];
+	  		}
+	  		else
+	  		{
+	  			$fname = $_POST["FNAME"];
+	  			$lname = $_POST["LNAME"];
+	  			$fgame = $_POST["FGAME"];
+	  			$hscore = $_POST["HSCORE"];
+	  			$lkgame = $_POST["OGAMES"];
+	  		}
+	  		
+	  		echo 'First name:<br>';
+        echo '<input type=text value="' . $fname . '" class=inpbox name="FNAME"><br>';
+      	echo 'Last name:<br>';
+      	echo '<input type=text value="' . $lname . '" class=inpbox name="LNAME"><br>';
+      	echo 'Favorite Game:<br>';
+      	echo '<input type=text value="' . $fgame . '" class=inpbox name="FGAME"><br>';
+      	echo 'High Score:<br>';
+      	echo '<input type=text value="'. $hscore . '" class=inpbox name="HSCORE"><br>';
+      	echo 'Other Games You Enjoy (separate by commas):<br>';
+      	echo '<input type=text value="' . $lkgame . '" class=inpbox name="OGAMES"><br>';
+      	echo '<input type=submit value="Update" class=sbutton name="UPDATE">';
+      
+      	
+    	if( isset($_POST["UPDATE"]) )
+    	{
+	  		
+	  		if( mysqli_num_rows($profile) == 0 )
+	  		{
+	  		 	
+	  			$getprofileid = mysqli_query($link, "SELECT MAX(idProfile) FROM Profile");
+	  			$tmprow = mysqli_fetch_row($getprofileid);
+	  			$id = $tmprow[0] + 1;
+	  			echo "INSERT INTO Profile(idProfile,fName,lName,fGame
+	  				,hScore,lkGame,User_idUser) VALUES ($id,'','','',0,'',$user)";
+	  			$flag = mysqli_query( $link,"INSERT INTO Profile(idProfile,fName,lName,fGame
+	  				,hScore,lkGame,User_idUser) VALUES ($id,'','','',0,'',$user)");
+	  			if(!$flag)
+	  				echo "Insert failed";
+	 			}
+	 			$flag = mysqli_query( $link, "UPDATE Profile SET fName='$fname',
+	 				lName='$lname',fGame='$fgame',hScore=$hscore,lkGame='$lkgame' WHERE
+	 				User_idUser=$user");
+	 			if(!$flag)
+	 				echo "Update failed.";
+	 			unset ($_SESSION['ENTER']);
+				session_unregister($ENTER);
+				mysqli_close($link);
+				header("Location: profile.php");
+	 		}
+	 			
     ?>
+   
+      	</form>
     </div>
     <div class="footbar">
     </div>
